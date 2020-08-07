@@ -1,0 +1,11 @@
+// HOJA DE ESTILO PARA EL COMPONENTE MADRE
+
+.listItem {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  max-width: 1300px;
+  padding: 20px;
+  grid-gap: 50px;
+}

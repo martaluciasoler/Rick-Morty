@@ -1,0 +1,13 @@
+.CharacterCard {
+  height: 310px;
+  color: aquamarine;
+
+  &__image {
+    height: 200px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+}

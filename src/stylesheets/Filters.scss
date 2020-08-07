@@ -1,0 +1,32 @@
+.form {
+  .input {
+    margin-bottom: 10px;
+    &__search {
+      width: 250px;
+      padding: 5px;
+      border: solid 1px greenyellow;
+      background-color: transparent;
+      text-align: center;
+
+      &:hover {
+        &::placeholder {
+          color: transparent;
+        }
+      }
+
+      &::placeholder {
+        color: aquamarine;
+      }
+    }
+    .removeBtn {
+      padding: 5px;
+      border: solid 1px aquamarine;
+      border-left: transparent;
+      background-color: aquamarine;
+      color: black;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
