@@ -1,12 +1,17 @@
 .form {
   .input {
+    margin-top: 50px;
     margin-bottom: 10px;
+    background: linear-gradient(to bottom, black, rgb(29, 29, 29));
     &__search {
       width: 250px;
       padding: 5px;
-      border: solid 1px greenyellow;
+      border: solid 1px rgb(153, 151, 151);
+      border-radius: 3px;
       background-color: transparent;
       text-align: center;
+      margin-top: 80px;
+      margin-bottom: 20px;
 
       &:hover {
         &::placeholder {
@@ -15,14 +20,14 @@
       }
 
       &::placeholder {
-        color: aquamarine;
+        color: aqua;
       }
     }
     .removeBtn {
-      padding: 5px;
-      border: solid 1px aquamarine;
-      border-left: transparent;
-      background-color: aquamarine;
+      padding: 8px;
+      border-radius: 4px;
+      background-color: aqua;
+      margin-left: 15px;
       color: black;
       &:hover {
         cursor: pointer;

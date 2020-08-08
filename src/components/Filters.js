@@ -5,13 +5,18 @@ class Filters extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    this.handleReset = this.handleReset.bind(this);
+    this.handelSelect = this.handelSelect.bind(this);
   }
 
   handleChange(event) {
-    this.props.handlerFilterText(event.target.value);
+    this.props.handleFilterText(event.target.value);
   }
   handleReset(ev) {
-    this.props.handlerResetText(ev.currentTarget);
+    this.props.handleResetText(ev.currentTarget);
+  }
+  handelSelect(ev) {
+    this.props.handleFilterSelect(ev.currentTarget.value);
   }
   render() {
     console.log('handleResetText');
@@ -28,12 +33,17 @@ class Filters extends React.Component {
           />
           <button
             className="removeBtn"
-            type="checkbox"
-            onChange={this.handleResetText}
-            checked={this.props.resetText}
+            type="button"
+            onClick={this.handleReset}
+            value={this.props.resetText}
           >
             X
           </button>
+          <select onChange={this.handelSelect} value={this.props.FilterSelect}>
+            <option value="Human">Humanos</option>
+            <option value="Alien">Alienigenas</option>
+            {/* <option value="Todos">Todos</option> */}
+          </select>
         </div>
       </form>
     );

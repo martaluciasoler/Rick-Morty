@@ -1,11 +1,21 @@
 .CharacterCard {
   height: 310px;
-  color: aquamarine;
+  color: aqua;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .marco {
+    background-color: rgb(36, 35, 35);
+    border-radius: 20px;
+    padding: 10px;
+  }
 
   &__image {
     height: 200px;
     border-radius: 20px;
     margin-bottom: 20px;
+
     &:hover {
       transform: scale(1.03);
     }

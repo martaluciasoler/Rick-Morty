@@ -4,17 +4,23 @@ import CharacterList from './CharacterList';
 import Header from './Header';
 import Filters from './Filters';
 import fetchData from '../services/FechData';
+import CharacterDetail from './CharacterDetails';
 import '../stylesheets/reset.scss';
 import '../stylesheets/App.scss';
-import CharacterDetail from './CharacterDetails';
+import adalab from '../images/adalab.png';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { Characters: [], filterText: '' };
+    this.state = {
+      Characters: [],
+      filterText: '',
+      filterSelect: '',
+    };
     this.handleFilterText = this.handleFilterText.bind(this);
     this.handleResetText = this.handleResetText.bind(this);
     this.renderCharacterDetails = this.renderCharacterDetails.bind(this);
+    this.handleFilterSelect = this.handleFilterSelect.bind(this);
   }
   componentDidMount() {
     fetchData().then((data) => {
@@ -25,14 +31,24 @@ class App extends React.Component {
   //metodo para pintar detalles
   renderCharacterDetails(props) {
     console.log(props);
-    const routeId = props.match.params.charaterId;
-    const matchCaracters = this.state.Characters.find(
+    const routeId = props.match.params.characterId;
+    const matchCharacters = this.state.Characters.find(
       (character) => character.id === parseInt(routeId)
     );
-    if (matchCaracters) {
-      return <CharacterDetail name={matchCaracters.name} />;
+
+    if (matchCharacters) {
+      return (
+        <CharacterDetail
+          name={matchCharacters.name}
+          image={matchCharacters.image}
+          species={matchCharacters.species}
+          origin={matchCharacters.origin}
+          episode={matchCharacters.episode}
+          status={matchCharacters.status}
+        />
+      );
     } else {
-      return <p>Producto no encontrado</p>;
+      return <p>¡CATASTROFE! personaje no encontrado</p>;
     }
   }
 
@@ -40,6 +56,11 @@ class App extends React.Component {
     console.log('handleFilterText');
     this.setState({
       filterText: text,
+    });
+  }
+  handleFilterSelect(sel) {
+    this.setState({
+      filterSelect: sel,
     });
   }
   handleResetText() {
@@ -51,22 +72,25 @@ class App extends React.Component {
 
   render() {
     console.log(this.state.Characters);
-    const filterCharacter = this.state.Characters.filter((character) => {
+    const filterCharacter = this.state.Character.filter((character) => {
       return character.name
         .toLowerCase()
         .includes(this.state.filterText.toLowerCase());
+      // }).filter((character) => {
+      //   return character.species === this.state.filterSelect;
     });
-
     return (
       <div className="App">
         <Header />
         <main className="main">
           <Route exact path="/">
             <Filters
-              handlerFilterText={this.handleFilterText}
+              handleFilterText={this.handleFilterText}
               filterText={this.state.filterText}
-              handleResetText={this.state.handleResetText}
+              handleResetText={this.handleResetText}
               resetText={this.state.resetText}
+              handleFilterSelect={this.handleFilterSelect}
+              filterSelect={this.state.filterSelect}
             />
             <CharacterList Characters={filterCharacter} />
           </Route>
@@ -77,7 +101,11 @@ class App extends React.Component {
             />
           </Switch>
         </main>
-        <footer className="footer"></footer>
+        <footer className="footer">
+          <div className="footer__logo">
+            <img className="adalab" src={adalab} alt="Rick and Morty" />
+          </div>
+        </footer>
       </div>
     );
   }

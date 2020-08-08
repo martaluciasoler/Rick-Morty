@@ -7,6 +7,7 @@ class CharacterList extends React.Component {
     const innerHTML = this.props.Characters.map((characterData, index) => (
       <CharacterCard key={index} data={characterData} />
     ));
+
     return (
       <ul className="dataList">
         <li key={this.props.id} className="listItem">
