@@ -27,7 +27,6 @@ class App extends React.Component {
   }
   //metodo para pintar detalles
   renderCharacterDetails(props) {
-    console.log(props);
     const routeId = props.match.params.characterId;
     const matchCharacters = this.state.characters.find(
       (character) => character.id === parseInt(routeId)
@@ -45,19 +44,17 @@ class App extends React.Component {
         />
       );
     } else {
-      return <p>¡CATÁSTROFE! personaje no encontrado</p>;
+      return <p className="catastrofe">¡CATÁSTROFE! personaje no encontrado</p>;
     }
   }
 
   handleFilterText(text) {
-    console.log('handleFilterText');
     this.setState({
       filterText: text,
     });
   }
 
   handleResetText() {
-    console.log('handleResetText');
     this.setState({
       filterText: '',
     });

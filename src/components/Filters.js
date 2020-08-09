@@ -16,7 +16,6 @@ class Filters extends React.Component {
   }
 
   render() {
-    console.log('handleResetText');
     return (
       <form className="form" autoComplete="off">
         <div className="input">
