@@ -5,7 +5,6 @@ import Header from './Header';
 import Filters from './Filters';
 import fetchData from '../services/FechData';
 import CharacterDetail from './CharacterDetails';
-import '../stylesheets/reset.scss';
 import '../stylesheets/App.scss';
 import adalab from '../images/adalab.png';
 
@@ -13,26 +12,24 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      Characters: [],
+      characters: [],
       filterText: '',
-      filterSelect: '',
     };
     this.handleFilterText = this.handleFilterText.bind(this);
     this.handleResetText = this.handleResetText.bind(this);
     this.renderCharacterDetails = this.renderCharacterDetails.bind(this);
-    this.handleFilterSelect = this.handleFilterSelect.bind(this);
   }
   componentDidMount() {
     fetchData().then((data) => {
-      this.Characters = data.results;
-      this.setState({ Characters: data.results });
+      this.characters = data.results;
+      this.setState({ characters: data.results });
     });
   }
   //metodo para pintar detalles
   renderCharacterDetails(props) {
     console.log(props);
     const routeId = props.match.params.characterId;
-    const matchCharacters = this.state.Characters.find(
+    const matchCharacters = this.state.characters.find(
       (character) => character.id === parseInt(routeId)
     );
 
@@ -48,7 +45,7 @@ class App extends React.Component {
         />
       );
     } else {
-      return <p>¡CATASTROFE! personaje no encontrado</p>;
+      return <p>¡CATÁSTROFE! personaje no encontrado</p>;
     }
   }
 
@@ -58,11 +55,7 @@ class App extends React.Component {
       filterText: text,
     });
   }
-  handleFilterSelect(sel) {
-    this.setState({
-      filterSelect: sel,
-    });
-  }
+
   handleResetText() {
     console.log('handleResetText');
     this.setState({
@@ -71,14 +64,12 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.Characters);
-    const filterCharacter = this.state.Character.filter((character) => {
+    const filterCharacter = this.state.characters.filter((character) => {
       return character.name
         .toLowerCase()
         .includes(this.state.filterText.toLowerCase());
-      // }).filter((character) => {
-      //   return character.species === this.state.filterSelect;
     });
+
     return (
       <div className="App">
         <Header />
@@ -89,10 +80,8 @@ class App extends React.Component {
               filterText={this.state.filterText}
               handleResetText={this.handleResetText}
               resetText={this.state.resetText}
-              handleFilterSelect={this.handleFilterSelect}
-              filterSelect={this.state.filterSelect}
             />
-            <CharacterList Characters={filterCharacter} />
+            <CharacterList characters={filterCharacter} />
           </Route>
           <Switch>
             <Route

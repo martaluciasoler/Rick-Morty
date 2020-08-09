@@ -9,26 +9,24 @@ class CharacterDetail extends React.Component {
     console.log(this.props);
     return (
       <div className="card__character">
+        <p className="card__character__info--name">{this.props.name}</p>
         <img
           className="card__character__img"
           alt={this.props.name}
           src={this.props.image}
         />
         <div className="card__character__info">
-          <p className="card__character__info--name">
-            Nombre -> {this.props.name}
-          </p>
           <p className="card__character__info--specie">
-            Especie -> {this.props.species}
+            Especie - {this.props.species}
           </p>
           <p className="card__character__info--origin">
-            Origen -> {this.props.origin.name}
+            Origen - {this.props.origin.name}
           </p>
           <p className="card__character__info--episode">
-            Episode -> {this.props.episode.length}
+            Episode - {this.props.episode.length}
           </p>
           <p className="card__character__info--state">
-            Estado -> {this.props.status}
+            Estado - {this.props.status}
           </p>
         </div>
         <div className="button">

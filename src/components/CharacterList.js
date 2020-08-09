@@ -4,7 +4,7 @@ import '../stylesheets/CharacterList.scss';
 
 class CharacterList extends React.Component {
   render() {
-    const innerHTML = this.props.Characters.map((characterData, index) => (
+    const innerHTML = this.props.characters.map((characterData, index) => (
       <CharacterCard key={index} data={characterData} />
     ));
 

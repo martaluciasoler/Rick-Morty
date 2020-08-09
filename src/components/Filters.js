@@ -6,7 +6,6 @@ class Filters extends React.Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleReset = this.handleReset.bind(this);
-    this.handelSelect = this.handelSelect.bind(this);
   }
 
   handleChange(event) {
@@ -15,9 +14,7 @@ class Filters extends React.Component {
   handleReset(ev) {
     this.props.handleResetText(ev.currentTarget);
   }
-  handelSelect(ev) {
-    this.props.handleFilterSelect(ev.currentTarget.value);
-  }
+
   render() {
     console.log('handleResetText');
     return (
@@ -39,11 +36,6 @@ class Filters extends React.Component {
           >
             X
           </button>
-          <select onChange={this.handelSelect} value={this.props.FilterSelect}>
-            <option value="Human">Humanos</option>
-            <option value="Alien">Alienigenas</option>
-            {/* <option value="Todos">Todos</option> */}
-          </select>
         </div>
       </form>
     );
